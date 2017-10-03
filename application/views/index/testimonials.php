@@ -2,8 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
- * @author Dino Cajic
- * @email  dinocajic@gmail.com
+ * @contributor Dino Cajic (dinocajic@gmail.com)
  */
 
 ?>
@@ -15,6 +14,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <div id="carousel-testimonial" class="carousel slide text-center" data-ride="carousel">
                     <!-- Wrapper for slides -->
                     <div class="carousel-inner" role="listbox">
+
+                        <?php
+                        // @todo this is where you'll pass the testimonials to.
+                        // @todo Loop through it to create the content
+                        // The 2 testimonials below are just place holders. They'll be deleted when you implement the above mentioned code.
+                        ?>
+
                         <div class="item active">
                             <p><img class="img-circle img-thumbnail" src="<?php echo base_url(); ?>assets/images/testimonial/01.jpg" alt=""></p>
                             <h4>Dino Cajic</h4>

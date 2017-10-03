@@ -2,8 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
- * @author Dino Cajic
- * @email  dinocajic@gmail.com
+ * @contributor Dino Cajic (dinocajic@gmail.com)
  */
 
 ?>

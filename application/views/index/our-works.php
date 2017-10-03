@@ -2,8 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
- * @author Dino Cajic
- * @email  dinocajic@gmail.com
+ * @contributor Dino Cajic (dinocajic@gmail.com)
  */
 
 ?>
@@ -22,6 +21,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <li><a href="#" data-filter=".art">Just interesting</a></li>
             </ul><!--/#portfolio-filter-->
         </div>
+
+        <?php
+        // @todo The items below are just place-holders. You'll delete them when you implement the code.
+        // @todo Pass the latest projects here and loop through them to output them.
+        ?>
 
         <div class="portfolio-items">
             <div class="portfolio-item animation">

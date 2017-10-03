@@ -3,13 +3,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
  * Class Main
+ *
+ * @contributor Dino Cajic (dinocajic@gmail.com)
  */
 class Main extends CI_Controller {
 
 	/**
-     * @author Dino Cajic
-     * @email  dinocajic@gmail.com
-     *
 	 * Index Page for this controller.
 	 *
 	 * Maps to the following URL
@@ -43,7 +42,15 @@ class Main extends CI_Controller {
 		$index['highlights']      = $this->load->view('index/highlights',      null, true);
 		$index['latest_projects'] = $this->load->view('index/latest-projects', null, true);
 		$index['learning']        = $this->load->view('index/learning',        null, true);
+
+		//
+        // @todo load the latest projects into our-works
+        //
 		$index['our_works']       = $this->load->view('index/our-works',       null, true);
+
+		//
+		// @todo latest testimonials and pass it to the index/testimonials view
+        //
 		$index['testimonials']    = $this->load->view('index/testimonials',    null, true);
 		$index['contact']         = $this->load->view('index/contact',         null, true);
 

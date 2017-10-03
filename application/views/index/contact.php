@@ -2,8 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
- * @author Dino Cajic
- * @email  dinocajic@gmail.com
+ * @contributor Dino Cajic (dinocajic@gmail.com)
  */
 
 ?>
@@ -14,7 +13,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <h2 class="section-title text-center wow fadeInDown animated" style="visibility: visible;">Send Message</h2>
                 <p class="text-center wow fadeInDown animated" style="visibility: visible;">Drop a line to us. Your word is most important to us.</p>
             </div>
-            <form id="main-contact-form" name="contact-form" method="post" action="#">
+            <form id="main-contact-form" name="contact-form" method="post" action="<?php echo base_url(); ?>contact/process">
                 <div class="col-lg-6 animated animate-from-left" style="opacity: 1; left: 0px;">
 
                     <div class="form-group">
