@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 21, 2017 at 03:08 PM
+-- Generation Time: Oct 03, 2017 at 03:14 PM
 -- Server version: 5.7.14
--- PHP Version: 5.6.25
+-- PHP Version: 7.0.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -104,7 +104,26 @@ CREATE TABLE `contact_messages` (
   `id` int(10) UNSIGNED NOT NULL,
   `subject` varchar(500) NOT NULL,
   `content` varchar(5000) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `email_id` int(10) UNSIGNED NOT NULL,
+  `is_read` tinyint(1) UNSIGNED NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `deleted_contact_messages`
+--
+
+CREATE TABLE `deleted_contact_messages` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `subject` varchar(500) NOT NULL,
+  `content` varchar(5000) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `email_id` int(10) UNSIGNED NOT NULL,
+  `deleted_by` int(10) UNSIGNED NOT NULL,
+  `deleted_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -149,7 +168,8 @@ CREATE TABLE `phone_number_types` (
 
 CREATE TABLE `project_categories` (
   `id` int(10) UNSIGNED NOT NULL,
-  `name` varchar(255) NOT NULL
+  `name` varchar(255) NOT NULL,
+  `enabled` tinyint(1) UNSIGNED NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -185,7 +205,8 @@ CREATE TABLE `testimonials` (
   `id` int(10) UNSIGNED NOT NULL,
   `users_id` int(10) UNSIGNED NOT NULL,
   `content` varchar(1000) NOT NULL,
-  `enabled` tinyint(1) NOT NULL,
+  `enabled` tinyint(1) UNSIGNED NOT NULL,
+  `featured` tinyint(1) UNSIGNED NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
@@ -269,6 +290,7 @@ CREATE TABLE `user_projects` (
   `banner_image` varchar(500) NOT NULL,
   `description` text NOT NULL,
   `project_category_id` int(10) UNSIGNED NOT NULL,
+  `enabled` tinyint(1) UNSIGNED NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
@@ -337,6 +359,12 @@ ALTER TABLE `blog_posts`
 -- Indexes for table `contact_messages`
 --
 ALTER TABLE `contact_messages`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `deleted_contact_messages`
+--
+ALTER TABLE `deleted_contact_messages`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -421,6 +449,11 @@ ALTER TABLE `blog_posts`
 -- AUTO_INCREMENT for table `contact_messages`
 --
 ALTER TABLE `contact_messages`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `deleted_contact_messages`
+--
+ALTER TABLE `deleted_contact_messages`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `emails`
