@@ -85,7 +85,11 @@ class Email_model extends CI_Model {
         $query = $this->db->get();
         $row   = $query->row();
 
-        return (int)$row->id;
+        if ( is_object($row) ) {
+            return (int)$row->id;
+        } else {
+            return -1;
+        }
     }
 
     /**
@@ -103,7 +107,11 @@ class Email_model extends CI_Model {
         $query = $this->db->get();
         $row   = $query->row();
 
-        return $row->email_address;
+        if ( is_object($row) ) {
+            return $row->email_address;
+        } else {
+            return "Does not exist";
+        }
     }
 
     /**
