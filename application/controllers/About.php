@@ -19,6 +19,8 @@ class About extends CI_Controller {
         // Load the header
         $data['header']  = $this->load->view('partials/header', $header, true);
 
+
+
         // @todo load the about view and store it in $data['content']
         $data['content'] = null;
 

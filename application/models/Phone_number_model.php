@@ -15,6 +15,20 @@ class Phone_number_model extends CI_Model {
      * @return bool
      */
     public function is_valid($phone_number) {
+        $phone_number = $this->clean_phone_number($phone_number);
+
+        // If phone number is 10 digits long, then it's most likely valid
+        return strlen($phone_number) == 10;
+    }
+
+    /**
+     * Cleans the phone number to only include digits
+     *
+     * @param string $phone_number
+     *
+     * @return string
+     */
+    public function clean_phone_number($phone_number) {
         // Remove any non-digits
         $phone_number = preg_replace("/[^0-9]/", "", $phone_number);
 
@@ -23,8 +37,7 @@ class Phone_number_model extends CI_Model {
             $phone_number = preg_replace("/^1/", "", $phone_number);
         }
 
-        // If phone number is 10 digits long, then it's most likely valid
-        return strlen($phone_number) == 10;
+        return $phone_number;
     }
 
     /**
@@ -35,6 +48,8 @@ class Phone_number_model extends CI_Model {
      * @return bool
      */
     public function does_exist($phone_number) {
+        $phone_number = $this->clean_phone_number($phone_number);
+
         $this->db->select("id");
         $this->db->where("phone_number", $phone_number);
         $this->db->from("phone_numbers");
@@ -58,6 +73,7 @@ class Phone_number_model extends CI_Model {
      * @return int - phone number id if successful and -1 if unsuccessful
      */
     public function add_phone_number($phone_number, $phone_number_type_id = 1) {
+        $phone_number = $this->clean_phone_number($phone_number);
 
         if ( $this->does_exist($phone_number) ) {
             return $this->get_phone_number_id($phone_number);
@@ -85,6 +101,8 @@ class Phone_number_model extends CI_Model {
      * @return int - the phone number id if exists or -1 if it doesn't exist
      */
     public function get_phone_number_id($phone_number) {
+        $phone_number = $this->clean_phone_number($phone_number);
+
         $this->db->select("id");
         $this->db->where("phone_number", $phone_number);
         $this->db->from("phone_numbers");
