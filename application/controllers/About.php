@@ -19,14 +19,28 @@ class About extends CI_Controller {
         // Load the header
         $data['header']  = $this->load->view('partials/header', $header, true);
 
-
-
         // @todo load the about view and store it in $data['content']
-        $data['content'] = null;
+        $baseOfficer = 1;
+        $numberOfCurrentOfficers = 2;
+
+        $this->load->model('User_model');
+        $this->load->model('Roles_model');
+
+        while($baseOfficer <= $numberOfCurrentOfficers){
+          $users['user'][$baseOfficer] = $this->User_model->get_user_details($baseOfficer);
+          $users['user'][$baseOfficer]['role'] = $this->Roles_model->get_role($baseOfficer);
+          $baseOfficer++;
+        }
+
+
+        $data['content'] = $this->load->view('about/about',$users,true);
 
         // Load the footer
         $data['footer']  = $this->load->view('partials/footer', null, true);
 
-        $this->load->view('partials/layout', $data);
+//        for($i =1; $i <= 2; $i++){
+  //        print_r($users['user'][$i]);
+  //      }
+       $this->load->view('partials/layout', $data);
     }
 }
